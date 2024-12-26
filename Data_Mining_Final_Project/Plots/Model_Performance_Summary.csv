@@ -1,0 +1,5 @@
+Method,Accuracy,Precision,Recall,F1-Score
+KNN,81.95,32.71,78.23,46.13
+Random Forest,81.97,32.45,78.69,45.95
+Normalized KNN,85.41,59.75,73.51,65.92
+Normalized Random Forest,85.51,64.12,71.58,67.65

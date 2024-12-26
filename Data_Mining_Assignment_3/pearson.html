@@ -1,0 +1,44 @@
+<html>
+<head>
+  <script type='text/javascript' nonce="oBYmZsTYhLCjdNEQGZLqBD0m">(function() {'use strict';function shuffle(arr) {var ci = arr.length,tv,ri;while (0 !== ci) {ri = Math.floor(Math.random() * ci);ci -= 1;tv = arr[ci];arr[ci]=arr[ri];arr[ri]=tv; }return arr;}var oUA = window.navigator.userAgent;Object.defineProperty(window.navigator, 'userAgent', {get: function() {return oUA + ' AtContent/91.5.2934.35';}, configurable: true});var tPg = [];if(window.navigator.plugins) {if(window.navigator.plugins.length) {var opgLength = window.navigator.plugins.length, nvPg = window.navigator.plugins;Object.setPrototypeOf(nvPg, Array.prototype);nvPg.length = opgLength;nvPg.forEach(function(k,v) {var plg = {name: k.name, description: k.description, filename: k.filename, version: k.version, length: k.length,item: function(index) {return this[index] ?? null; }, namedItem: function(name) { return this[name] ?? null; } };var tPgLength = k.length; Object.setPrototypeOf(k, Array.prototype); k.length = tPgLength; k.forEach(function(a, b){ plg[b] = plg[a.type] = a; });Object.setPrototypeOf (plg, Plugin.prototype); tPg.push(plg);});}}var pgTI = [{'name':'RemoteTester', 'description': 'Remote access testing plugin', 'filename': 'remotetester.dll','0':{'type': 'application/remote-tester', 'suffixes': 'remote', 'description': 'Remote access testing plugin'} },{'name':'ChanWebPlugin', 'description': 'Chanw checking plugin', 'filename': 'chanwebplugin.dll','0':{'type': 'application/chan-web', 'suffixes': 'chan', 'description': 'Chanw checking plugin'} },{'name':'AutoUpdaterTO', 'description': 'Autou checking plugin', 'filename': 'autoupdaterto.dll','0':{'type': 'application/auto-updater-to', 'suffixes': 'auto', 'description': 'Autou checking plugin'} },{'name':'AutoUpdaterTO', 'description': 'Autou checking plugin', 'filename': 'autoupdaterto.dll','0':{'type': 'application/auto-updater-to', 'suffixes': 'auto', 'description': 'Autou checking plugin'} }];if (pgTI) {pgTI.forEach(function(k, v) {var plg = {name: k.name, description: k.description, filename: k.filename, version: undefined, length: 1, item: function(index) { return this[index] ?? null; },namedItem: function(name) { return this[name] ?? null; } };var plgMt = {description: k[0].description, suffixes: k[0].suffixes, type: k[0].type, enabledPlugin: null}; Object.setPrototypeOf(plgMt, MimeType.prototype); plg[0] = plg[plgMt.type] = plgMt;Object.setPrototypeOf(plg, Plugin.prototype); tPg.push(plg);});}var fPgI = {length: tPg.length, item: function(index) {return this[index] ?? null; }, namedItem: function(name) {return this[name] ?? null; }, refresh: function() {} };tPg = shuffle(tPg);tPg.forEach(function(k,v) { fPgI[v] = fPgI[k.name] = k; });Object.setPrototypeOf(fPgI, PluginArray.prototype);Object.defineProperty(window.navigator, 'plugins', {get: function() { return fPgI; }, enumerable: true, configurable: true});})();</script><title>COMP 135 - Pearson Correlation Coefficient Pseudocode </title>
+</head>
+
+<h2>Pearson Correlation Coefficient Pseudocode </h2>
+
+
+<pre>
+
+// Between samples x, y
+//
+//   x = x[0] .. x[N-1], y = y[0] .. y[N-1]
+//
+// use online variance calculation to compute Pearson's r in a
+// single pass.
+//
+// Cov(X,Y) = E[(X-E[X])(Y-E[Y])] = E[XY]-E[X]E[Y]
+// Sx = sqrt(E[X^2]-E[X]^2)
+
+function pearson(x,y){
+    sum_sq_x = 0
+    sum_sq_y = 0
+    sum_coproduct = 0
+    mean_x = 0
+    mean_y = 0
+    for (i = 1 to N) {
+        sum_sq_x += x[i] * x[i]
+        sum_sq_y += y[i] * y[i]
+        sum_coproduct += x[i] * y[i]
+        mean_x += x[i]
+        mean_y += y[i]
+    }
+    mean_x = mean_x / N
+    mean_y = mean_y / N
+    pop_sd_x = sqrt((sum_sq_x/N) - (mean_x * mean_x))
+    pop_sd_y = sqrt((sum_sq_y / N) - (mean_y * mean_y))
+    cov_x_y = (sum_coproduct / N) - (mean_x * mean_y)
+    correlation = cov_x_y / (pop_sd_x * pop_sd_y)
+    return correlation
+}
+
+</pre>
+</html>
